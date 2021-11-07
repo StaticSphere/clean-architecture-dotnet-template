@@ -4,8 +4,8 @@ This solution was created following the guidelines of the Clean Architecture pat
 
 ## Original Clean Architecture Resources
 
-[YouTube - Clean Architecture with ASP.NET Core 3.0 • Jason Taylor • GOTO 2019](https://www.youtube.com/watch?v=dK4Yb6-LxAk)
-[Blog Post - Clean Architecture with .NET Core: Getting Started](https://jasontaylor.dev/clean-architecture-getting-started/)
+-   [YouTube - Clean Architecture with ASP.NET Core 3.0 • Jason Taylor • GOTO 2019](https://www.youtube.com/watch?v=dK4Yb6-LxAk)
+-   [Blog Post - Clean Architecture with .NET Core: Getting Started](https://jasontaylor.dev/clean-architecture-getting-started/)
 
 ## Architecture
 
