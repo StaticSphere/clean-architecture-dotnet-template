@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <NoDefaultExcludes>true</NoDefaultExcludes>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageOutputPath>.</PackageOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="src\**\*" Exclude="**\bin\**\*;**\obj\**\*" />
+    <Content Include="tests\**\*" Exclude="**\bin\**\*;**\obj\**\*" />
+    <Content Include=".template.config\**\*" />
+    <Content Include="*" Exclude="nuget.csproj" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <PackageType>Template</PackageType>
+    <PackageVersion>1.0.0</PackageVersion>
+    <PackageId>StaticSphere.CleanArchitecture.Api</PackageId>
+    <Title>Clean Architecture Solution</Title>
+    <Company>StaticSphere</Company>
+    <Authors>Jamie Nordmeyer</Authors>
+    <Copyright>Jamie Nordmeyer © 2020</Copyright>
+    <Description>Creates a .NET 5 solution based on the Clean Architecture pattern.</Description>
+    <PackageTags>c#;asp.net;core;template;web</PackageTags>
+    <PackageCopyright>Jamie Nordmeyer © 2020</PackageCopyright>
+    <PackageProjectUrl>https://github.com/StaticSphere/clean-architecture-dotnet-template</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/StaticSphere/clean-architecture-dotnet-template</RepositoryUrl>
+  </PropertyGroup>
+</Project>

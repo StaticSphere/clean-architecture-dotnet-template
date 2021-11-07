@@ -22,7 +22,7 @@ namespace CleanArchTemplate.Infrastructure
 
         public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
         {
-#if (enablepostgres)
+#if (includePostgres)
             services.AddDbContext<CleanArchTemplateDbContext>(options =>
             {
                 options.UseNpgsql(
