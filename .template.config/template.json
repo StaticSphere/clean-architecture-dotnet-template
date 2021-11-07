@@ -1,0 +1,120 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Jamie Nordmeyer",
+  "classifications": ["Web", "ASP.NET", "API"],
+  "identity": "StaticSphere.CleanArchitecture.Api",
+  "name": "Clean Architecture Solution",
+  "tags": {
+    "language": "C#",
+    "type": "solution"
+  },
+  "shortName": "clean-arch",
+  "sourceName": "CleanArchTemplate",
+  "preferNameDirectory": true,
+
+  "symbols": {
+    "includeTests": {
+      "type": "parameter",
+      "datatype": "bool",
+      "defaultValue": "true",
+      "description": "Determines if the test projects should be included or not"
+    },
+    "skipRestore": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "If specified, skips the automatic restore of the project on create.",
+      "defaultValue": "false"
+    },
+    "includeEF": {
+      "type": "parameter",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "postgres",
+          "description": "Adds Postgres Entity Framework congiguration"
+        },
+        {
+          "choice": "sqlserver",
+          "description": "Adds SQL Server Entity Framework configuration"
+        }
+      ]
+    },
+    "includePostgres": {
+      "type": "computed",
+      "value": "(includeEF == \"postgres\")"
+    },
+    "includeSqlServer": {
+      "type": "computed",
+      "value": "(includeEF == \"sqlserver\")"
+    },
+    "includeDB": {
+      "type": "computed",
+      "value": "(includePostgres || includeSqlServer)"
+    }
+  },
+
+  "sources": [
+    {
+      "exclude": [
+        "**/[Bb]in/**",
+        "**/[Oo]bj/**",
+        ".template.config/**/*",
+        "**/*.filelist",
+        "**/*.user",
+        "**/*.lock.json",
+        ".vscode/**/*"
+      ],
+      "modifiers": [
+        {
+          "condition": "(!includeTests)",
+          "exclude": [
+            "CleanArchTemplate.Application.Tests/**/*",
+            "CleanArchTemplate.Infrastructure.Tests/**/*",
+            "CleanArchTemplate.Api.Tests/**/*"
+          ]
+        },
+        {
+          "condition": "(!includeDB)",
+          "exclude": [
+            "src/CleanArchTemplate.Application/Interfaces/Persistence/ICleanArchTemplateDbContext.cs",
+            "src/CleanArchTemplate.Infrastructure/Persistence/Configuration/**/*",
+            "src/CleanArchTemplate.Infrastructure/Persistence/CleanArchTemplateDbContext.cs",
+            "src/CleanArchTemplate.Infrastructure/Persistence/SeedData.cs"
+          ]
+        }
+      ]
+    }
+  ],
+  "primaryOutputs": [
+    {
+      "path": "CleanArchTemplate.sln"
+    }
+  ],
+  "postActions": [
+    {
+      "condition": "(!skipRestore)",
+      "description": "Restore NuGet packages required by this project.",
+      "manualInstructions": [{ "text": "Run 'dotnet restore'" }],
+      "actionId": "210D431B-A78B-4D2F-B762-4ED3E3EA9025",
+      "continueOnError": true
+    }
+  ],
+
+  "SpecialCustomOperations": {
+    "**/*.csproj": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": ["<!-- #if"],
+            "else": ["<!-- #else"],
+            "elseif": ["<!-- #elseif", "<!-- #elif"],
+            "endif": ["<!-- #endif"],
+            "trim": "true",
+            "wholeLine": "true"
+          }
+        }
+      ]
+    }
+  }
+}
