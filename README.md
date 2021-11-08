@@ -16,6 +16,29 @@ The solution is a set of .NET 5 C# projects. Each project has nullable type chec
 -   _CleanArchTemplate.Infrastructure_ - This project contains the implemenation of any logic that needs to communicate with outside entities, such as a database, the file system, other HTTP API's, and so forth.
 -   _CleanArchTemplate.Api_ - This is the front-end of the application, and provides the start-up code and the API endpoint entry points. It is an ASP<nowiki/>.NET Web API project.
 
+### Data Services
+
+The architecture utilizes data services to manage access to the data store. Each data service is meant to isolate a single domain action within the service; retrieving a record and its related entities, or persisting them. For instance, the data store operation to get all of the people in the data store (as implemented by the sample `GetPeopleQuery.Handler.cs` file) is self contained in the data service `IGetPeopleDataService`.
+
+The `AddInfrastructure` method will scan the `CleanArchTemplate.Application` project for all interfaces that start with `I`, and end with `DataSevice`, and will pair them with any classes in the `CleanArchTemplate.Infrastructure` project that implement the interfaces. So, if you have a data source that stores pets, you can create an interface called `IGetPetsDataService`, create an implementation class for it, and the `AddInfrastructure` method will pick it up and add it to the dependency injection container.
+
+It is important to note that you do not need to register these data services directly (with Scoped lifetime). The `AddInfrastructure` method uses the following reflection code to automatically do this:
+
+```C#
+private static readonly Regex InterfacePattern = new Regex("I(?:.+)DataService", RegexOptions.Compiled);
+...
+(from c in typeof(Application.DependencyInjection).Assembly.GetTypes()
+ where c.IsInterface && InterfacePattern.IsMatch(c.Name)
+ from i in typeof(Infrastructure.DependencyInjection).Assembly.GetTypes()
+ where c.IsAssignableFrom(i)
+ select new
+ {
+     Contract = c,
+     Implementation = i
+ }).ToList()
+.ForEach(x => services.AddScoped(x.Contract, x.Implementation));
+```
+
 ### Endpoints
 
 Endpoints work with a class called `EndpointResult`. This class is separate from the `ActionResults` used by ASP<nowiki/>.NET, and provides for a separation of concerns from the API itself. When the call to `IMediator.Send` returns, it is cast to an `ActionResult` via the `ToActionResult` extension method.

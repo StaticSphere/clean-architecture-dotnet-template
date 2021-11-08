@@ -62,7 +62,8 @@
         "**/*.filelist",
         "**/*.user",
         "**/*.lock.json",
-        ".vscode/**/*"
+        ".vscode/**/*",
+        "nuget.csproj"
       ],
       "modifiers": [
         {

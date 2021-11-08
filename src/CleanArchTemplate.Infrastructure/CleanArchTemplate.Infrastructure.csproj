@@ -17,6 +17,9 @@
     <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
     <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
 <!-- #endif -->
+<!-- #if (includeSqlServer) -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
+<!-- #endif -->
   </ItemGroup>
 
 </Project>

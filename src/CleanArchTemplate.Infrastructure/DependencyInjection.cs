@@ -31,6 +31,15 @@ namespace CleanArchTemplate.Infrastructure
                 ).UseSnakeCaseNamingConvention();
             });
 #endif
+#if (includeSqlServer)
+            services.AddDbContext<CleanArchTemplateDbContext>(options =>
+            {
+                options.UseSqlServer(
+                    configuration.GetConnectionString("DefaultConnection"),
+                    x => x.MigrationsHistoryTable("__EFMigrationsHistory")
+                );
+            });
+#endif
 #if (includeDB)
             services.AddScoped<ICleanArchTemplateDbContext, CleanArchTemplateDbContext>();
 #endif
