@@ -1,8 +1,5 @@
-using System;
+namespace CleanArchTemplate.Api.Exceptions;
 
-namespace CleanArchTemplate.Api.Exceptions
+public class MissingClaimsPrincipalException : Exception
 {
-    public class MissingClaimsPrincipalException : Exception
-    {
-    }
 }

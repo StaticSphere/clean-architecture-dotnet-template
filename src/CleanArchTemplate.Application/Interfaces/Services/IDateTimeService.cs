@@ -1,9 +1,6 @@
-using System;
+namespace CleanArchTemplate.Application.Interfaces.Services;
 
-namespace CleanArchTemplate.Application.Interfaces.Services
+public interface IDateTimeService
 {
-    public interface IDateTimeService
-    {
-        DateTime UtcNow { get; }
-    }
+    DateTime UtcNow { get; }
 }

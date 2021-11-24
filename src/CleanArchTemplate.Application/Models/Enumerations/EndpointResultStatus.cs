@@ -1,13 +1,12 @@
-namespace CleanArchTemplate.Application.Models.Enumerations
+namespace CleanArchTemplate.Application.Models.Enumerations;
+
+public enum EndpointResultStatus
 {
-    public enum EndpointResultStatus
-    {
-        Success,
-        NotFound,
-        Invalid,
-        Duplicate,
-        Unauthorized,
-        Gone,
-        Error
-    }
+    Success,
+    NotFound,
+    Invalid,
+    Duplicate,
+    Unauthorized,
+    Gone,
+    Error
 }

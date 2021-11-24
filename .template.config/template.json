@@ -50,6 +50,12 @@
     "includeDB": {
       "type": "computed",
       "value": "(includePostgres || includeSqlServer)"
+    },
+    "useStartup": {
+      "type": "parameter",
+      "datatype": "bool",
+      "description": "Determines if the API project should use Startup.cs instead of the newer Minimal API style Program.cs file",
+      "defaultValue": "false"
     }
   },
 
@@ -82,6 +88,10 @@
             "src/CleanArchTemplate.Infrastructure/Persistence/CleanArchTemplateDbContext.cs",
             "src/CleanArchTemplate.Infrastructure/Persistence/SeedData.cs"
           ]
+        },
+        {
+          "condition": "(!useStartup)",
+          "exclude": ["src/CleanArchTemplate.Api/Startup.cs"]
         }
       ]
     }

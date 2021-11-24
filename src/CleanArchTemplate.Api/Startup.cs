@@ -2,81 +2,75 @@ using CleanArchTemplate.Api.Services;
 using CleanArchTemplate.Application;
 using CleanArchTemplate.Application.Interfaces.Services;
 using CleanArchTemplate.Infrastructure;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Net.Http.Headers;
 using Microsoft.OpenApi.Models;
 
-namespace CleanArchTemplate.Api
+namespace CleanArchTemplate.Api;
+
+public class Startup
 {
-    public class Startup
+    public IConfiguration Configuration { get; }
+
+    public Startup(IConfiguration configuration)
     {
-        public IConfiguration Configuration { get; }
+        Configuration = configuration;
+    }
 
-        public Startup(IConfiguration configuration)
+    public void ConfigureServices(IServiceCollection services)
+    {
+        // Adds in Application dependencies
+        services.AddApplication(Configuration);
+        // Adds in Infrastructure dependencies
+        services.AddInfrastructure(Configuration);
+
+        services.AddHttpContextAccessor();
+        services.AddHealthChecks();
+
+        services.AddApiVersioning(options =>
         {
-            Configuration = configuration;
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.DefaultApiVersion = ApiVersion.Default;
+        });
+
+        services.AddScoped<IPrincipalService, PrincipalService>();
+
+        services.AddControllers();
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchTemplate.Api", Version = "v1" });
+        });
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchTemplate.Api v1"));
         }
 
-        public void ConfigureServices(IServiceCollection services)
+        app.UseHttpsRedirection();
+
+        app.UseRouting();
+
+        app.Use(async (httpContext, next) =>
         {
-            // Adds in Application dependencies
-            services.AddApplication(Configuration);
-            // Adds in Infrastructure dependencies
-            services.AddInfrastructure(Configuration);
-
-            services.AddHttpContextAccessor();
-            services.AddHealthChecks();
-
-            services.AddApiVersioning(options =>
+            var apiMode = httpContext.Request.Path.StartsWithSegments("/api");
+            if (apiMode)
             {
-                options.AssumeDefaultVersionWhenUnspecified = true;
-                options.DefaultApiVersion = ApiVersion.Default;
-            });
-
-            services.AddScoped<IPrincipalService, PrincipalService>();
-
-            services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CleanArchTemplate.Api", Version = "v1" });
-            });
-        }
-
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-        {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CleanArchTemplate.Api v1"));
+                httpContext.Request.Headers[HeaderNames.XRequestedWith] = "XMLHttpRequest";
             }
+            await next();
+        });
 
-            app.UseHttpsRedirection();
+        app.UseAuthorization();
 
-            app.UseRouting();
-
-            app.Use(async (httpContext, next) =>
-            {
-                var apiMode = httpContext.Request.Path.StartsWithSegments("/api");
-                if (apiMode)
-                {
-                    httpContext.Request.Headers[HeaderNames.XRequestedWith] = "XMLHttpRequest";
-                }
-                await next();
-            });
-
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapHealthChecks("/health");
-                endpoints.MapControllers();
-            });
-        }
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapHealthChecks("/health");
+            endpoints.MapControllers();
+        });
     }
 }
