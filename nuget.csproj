@@ -25,7 +25,7 @@
     <Title>Clean Architecture Solution</Title>
     <Company>StaticSphere</Company>
     <Authors>Jamie Nordmeyer</Authors>
-    <Copyright>Jamie Nordmeyer © 2020</Copyright>
+    <Copyright>Jamie Nordmeyer © 2021</Copyright>
     <Description>Creates a .NET 6 solution based on the Clean Architecture pattern.</Description>
     <PackageTags>c#;asp.net;core;template;web</PackageTags>
     <PackageCopyright>Jamie Nordmeyer © 2021</PackageCopyright>
