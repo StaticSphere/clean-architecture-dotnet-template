@@ -1,25 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CleanArchTemplate.Infrastructure</RootNamespace>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CleanArchTemplate.Application\CleanArchTemplate.Application.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="5.0.0" />
-<!-- #if (includePostgres) -->
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.10" />
-    <PackageReference Include="EFCore.NamingConventions" Version="5.0.2" />
-<!-- #endif -->
-<!-- #if (includeSqlServer) -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.12" />
-<!-- #endif -->
-  </ItemGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>CleanArchTemplate.Infrastructure</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CleanArchTemplate.Application\CleanArchTemplate.Application.csproj"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="6.0.0"/>
+		<!-- #if (includePostgres) -->
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.0"/>
+		<PackageReference Include="EFCore.NamingConventions" Version="6.0.0"/>
+		<!-- #endif -->
+		<!-- #if (includeSqlServer) -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.0"/>
+		<!-- #endif -->
+	</ItemGroup>
 </Project>

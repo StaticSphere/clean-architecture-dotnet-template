@@ -1,14 +1,11 @@
-using System.Threading;
-using System.Threading.Tasks;
 using CleanArchTemplate.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace CleanArchTemplate.Application.Interfaces.Persistence
-{
-    public interface ICleanArchTemplateDbContext
-    {
-        DbSet<Person> People { get; set; }
+namespace CleanArchTemplate.Application.Interfaces.Persistence;
 
-        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
-    }
+public interface ICleanArchTemplateDbContext
+{
+    DbSet<Person> People { get; set; }
+
+    Task<int> SaveChangesAsync(CancellationToken cancellationToken);
 }

@@ -1,7 +1,6 @@
-namespace CleanArchTemplate.Application.Interfaces.Services
+namespace CleanArchTemplate.Application.Interfaces.Services;
+
+public interface IPrincipalService
 {
-    public interface IPrincipalService
-    {
-        int UserId { get; }
-    }
+    int UserId { get; }
 }

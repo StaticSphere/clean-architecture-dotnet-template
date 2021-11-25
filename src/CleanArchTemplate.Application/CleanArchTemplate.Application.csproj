@@ -1,23 +1,20 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>CleanArchTemplate.Application</RootNamespace>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\CleanArchTemplate.Domain\CleanArchTemplate.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
-    <PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="5.0.0" />
-<!-- #if(includeDB) -->
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.11" />
-<!-- #endif -->
-  </ItemGroup>
-
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>CleanArchTemplate.Application</RootNamespace>
+		<Nullable>enable</Nullable>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\CleanArchTemplate.Domain\CleanArchTemplate.Domain.csproj"/>
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1"/>
+		<PackageReference Include="FluentValidation.AspNetCore" Version="10.3.4"/>
+		<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0"/>
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0"/>
+		<!-- #if(includeDB) -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.0"/>
+		<!-- #endif -->
+	</ItemGroup>
 </Project>

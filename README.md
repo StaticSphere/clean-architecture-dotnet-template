@@ -9,7 +9,7 @@ This solution was created following the guidelines of the Clean Architecture pat
 
 ## Architecture
 
-The solution is a set of .NET 5 C# projects. Each project has nullable type checking enabled out of the box. The projects implement the Clean Architecture pattern as described here:
+The solution is a set of .NET 6 C# projects. Each project has nullable type checking enabled out of the box. The projects implement the Clean Architecture pattern as described here:
 
 -   _CleanArchTemplate.Domain_ - This project is meant to hold the domain entities of the application. The classes in the `Entities` folder map to the data tables or records in whatever data store the application is configured to use.
 -   _CleanArchTemplate.Application_ - This project contains the business logic and rules that make the application as a whole run as it's supposed to. Any interfaces necessary for the application to run are defined in the `Interfaces` folder.
@@ -69,6 +69,10 @@ The [FluentValidation](https://fluentvalidation.net/) library provides a fluid i
 #### Entity Framework
 
 [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) provides the data store access for the application.
+
+> As configured, you'll need to create a configuration value in appSettings.json, secrets.json, etc., called `ConnectionStrings:DefaultConnection` (based on how keys are stored in the .NET configuration system), as the application will be looking for this when it runs or does migrations.
+>
+> In addition, if you want to run the application directly, you'll need to use EF Migrations to create an initial migration and apply it to the database.
 
 ---#endif
 ---#if (includePostgres)
