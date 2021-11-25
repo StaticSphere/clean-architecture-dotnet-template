@@ -70,6 +70,10 @@ The [FluentValidation](https://fluentvalidation.net/) library provides a fluid i
 
 [Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) provides the data store access for the application.
 
+> As configured, you'll need to create a configuration value in appSettings.json, secrets.json, etc., called `ConnectionStrings:DefaultConnection` (based on how keys are stored in the .NET configuration system), as the application will be looking for this when it runs or does migrations.
+>
+> In addition, if you want to run the application directly, you'll need to use EF Migrations to create an initial migration and apply it to the database.
+
 ---#endif
 ---#if (includePostgres)
 
