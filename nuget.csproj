@@ -20,7 +20,7 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>2.0.0</PackageVersion>
+    <PackageVersion>2.0.1</PackageVersion>
     <PackageId>StaticSphere.CleanArchitecture.Api</PackageId>
     <Title>Clean Architecture Solution</Title>
     <Company>StaticSphere</Company>
