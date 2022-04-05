@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CleanArchTemplate.Application.Interfaces.Persistence;
 
-public interface ICleanArchTemplateDbContext
+public interface IApplicationDbContext
 {
     DbSet<Person> People { get; set; }
 

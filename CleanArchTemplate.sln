@@ -1,5 +1,4 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -13,6 +12,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchTemplate.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchTemplate.Api", "src\CleanArchTemplate.Api\CleanArchTemplate.Api.csproj", "{FCDF0F48-4A89-4475-8149-E0A18B35611D}"
 EndProject
+---#if(includeTests)
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7BB643D4-45A4-46D1-BEEF-F5A34C74B240}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchTemplate.Application.Tests", "tests\CleanArchTemplate.Application.Tests\CleanArchTemplate.Application.Tests.csproj", "{47DCB524-5652-4C14-ABCC-86C435E10B58}"
@@ -21,6 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchTemplate.Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanArchTemplate.Api.Tests", "tests\CleanArchTemplate.Api.Tests\CleanArchTemplate.Api.Tests.csproj", "{DE7A08A9-77F8-4E29-A2E0-F1DAC7CE1DC7}"
 EndProject
+---#endif
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -82,6 +83,7 @@ Global
 		{FCDF0F48-4A89-4475-8149-E0A18B35611D}.Release|x64.Build.0 = Release|Any CPU
 		{FCDF0F48-4A89-4475-8149-E0A18B35611D}.Release|x86.ActiveCfg = Release|Any CPU
 		{FCDF0F48-4A89-4475-8149-E0A18B35611D}.Release|x86.Build.0 = Release|Any CPU
+---#if(includeTests)
 		{47DCB524-5652-4C14-ABCC-86C435E10B58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47DCB524-5652-4C14-ABCC-86C435E10B58}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47DCB524-5652-4C14-ABCC-86C435E10B58}.Debug|x64.ActiveCfg = Debug|Any CPU
@@ -118,14 +120,17 @@ Global
 		{DE7A08A9-77F8-4E29-A2E0-F1DAC7CE1DC7}.Release|x64.Build.0 = Release|Any CPU
 		{DE7A08A9-77F8-4E29-A2E0-F1DAC7CE1DC7}.Release|x86.ActiveCfg = Release|Any CPU
 		{DE7A08A9-77F8-4E29-A2E0-F1DAC7CE1DC7}.Release|x86.Build.0 = Release|Any CPU
+---#endif
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{B9363D0E-B29B-4C58-87BD-685BD90AFCC2} = {314E9954-B5C1-438E-82BB-3F2ACD3968DE}
 		{E603EC71-4CA7-4E85-9D43-B3EF7CBEEE6F} = {314E9954-B5C1-438E-82BB-3F2ACD3968DE}
 		{2D80FAA0-8BE5-42A8-839D-C25EE475DCE9} = {314E9954-B5C1-438E-82BB-3F2ACD3968DE}
 		{FCDF0F48-4A89-4475-8149-E0A18B35611D} = {314E9954-B5C1-438E-82BB-3F2ACD3968DE}
+---#if(includeTests)
 		{47DCB524-5652-4C14-ABCC-86C435E10B58} = {7BB643D4-45A4-46D1-BEEF-F5A34C74B240}
 		{BE7D2D04-8011-43E4-8B08-C16ADAB2F3D6} = {7BB643D4-45A4-46D1-BEEF-F5A34C74B240}
 		{DE7A08A9-77F8-4E29-A2E0-F1DAC7CE1DC7} = {7BB643D4-45A4-46D1-BEEF-F5A34C74B240}
+---#endif
 	EndGlobalSection
 EndGlobal

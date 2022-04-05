@@ -19,6 +19,8 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddSingleton(Configuration);
+
         // Adds in Application dependencies
         services.AddApplication(Configuration);
         // Adds in Infrastructure dependencies

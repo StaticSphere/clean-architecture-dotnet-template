@@ -26,6 +26,10 @@ IHostBuilder CreateHostBuilder(string[] args) =>
 #else
 // Configure Services
 var builder = WebApplication.CreateBuilder(args);
+// TODO: Remove this line if you want to return the Server header
+builder.WebHost.ConfigureKestrel(options => options.AddServerHeader = false);
+
+builder.Services.AddSingleton(builder.Configuration);
 
 // Adds in Application dependencies
 builder.Services.AddApplication(builder.Configuration);
