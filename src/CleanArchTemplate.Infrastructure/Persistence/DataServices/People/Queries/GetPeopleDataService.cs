@@ -12,9 +12,9 @@ namespace CleanArchTemplate.Infrastructure.Persistence.DataServices.People.Queri
 public class GetPeopleDataService : IGetPeopleDataService
 {
 #if (includeDB)
-    private readonly ICleanArchTemplateDbContext _dbContext;
+    private readonly IApplicationDbContext _dbContext;
 
-    public GetPeopleDataService(ICleanArchTemplateDbContext dbContext)
+    public GetPeopleDataService(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }

@@ -9,9 +9,9 @@ namespace CleanArchTemplate.Infrastructure.Persistence.DataServices.People.Comma
 public class AddPersonDataService : IAddPersonDataService
 {
 #if (includeDB)
-    private readonly ICleanArchTemplateDbContext _dbContext;
+    private readonly IApplicationDbContext _dbContext;
 
-    public AddPersonDataService(ICleanArchTemplateDbContext dbContext)
+    public AddPersonDataService(IApplicationDbContext dbContext)
     {
         _dbContext = dbContext;
     }

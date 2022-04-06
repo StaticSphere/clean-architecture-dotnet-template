@@ -56,6 +56,13 @@
       "datatype": "bool",
       "description": "Determines if the API project should use Startup.cs instead of the newer Minimal API style Program.cs file",
       "defaultValue": "false"
+    },
+    "dbContextName": {
+      "type": "parameter",
+      "datatype": "text",
+      "description": "If specified, sets the name of the EF DbContext when using EF. You MUST specify the `DbContext` suffix in this name if you want it in the class name generated.",
+      "replaces": "ApplicationDbContext",
+      "fileRename": "ApplicationDbContext"
     }
   },
 
@@ -75,17 +82,17 @@
         {
           "condition": "(!includeTests)",
           "exclude": [
-            "CleanArchTemplate.Application.Tests/**/*",
-            "CleanArchTemplate.Infrastructure.Tests/**/*",
-            "CleanArchTemplate.Api.Tests/**/*"
+            "tests/CleanArchTemplate.Application.Tests/**/*",
+            "tests/CleanArchTemplate.Infrastructure.Tests/**/*",
+            "tests/CleanArchTemplate.Api.Tests/**/*"
           ]
         },
         {
           "condition": "(!includeDB)",
           "exclude": [
-            "src/CleanArchTemplate.Application/Interfaces/Persistence/ICleanArchTemplateDbContext.cs",
+            "src/CleanArchTemplate.Application/Interfaces/Persistence/IApplicationDbContext.cs",
             "src/CleanArchTemplate.Infrastructure/Persistence/Configuration/**/*",
-            "src/CleanArchTemplate.Infrastructure/Persistence/CleanArchTemplateDbContext.cs",
+            "src/CleanArchTemplate.Infrastructure/Persistence/ApplicationDbContext.cs",
             "src/CleanArchTemplate.Infrastructure/Persistence/SeedData.cs"
           ]
         },
@@ -121,6 +128,21 @@
             "else": ["<!-- #else"],
             "elseif": ["<!-- #elseif", "<!-- #elif"],
             "endif": ["<!-- #endif"],
+            "trim": "true",
+            "wholeLine": "true"
+          }
+        }
+      ]
+    },
+    "**/*.sln": {
+      "operations": [
+        {
+          "type": "conditional",
+          "configuration": {
+            "if": ["---#if"],
+            "else": ["---#else"],
+            "elseif": ["---#elseif", "---#elif"],
+            "endif": ["---#endif"],
             "trim": "true",
             "wholeLine": "true"
           }
