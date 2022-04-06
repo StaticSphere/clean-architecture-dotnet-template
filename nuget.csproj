@@ -33,5 +33,13 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/StaticSphere/clean-architecture-dotnet-template</RepositoryUrl>
+    <PackageReleaseNotes>
+        Renamed the Entity Framework class (if --includeEf is specified) to ApplicationDbContext. However, you can
+        provide the optional --dbContextName to change this. You'll want to add DbContext as a suffix to this name
+        if you want it. Fixed broken --includeTests parameter (before, it would always include tests). Added removal
+        of Server header to the Program.cs file. Included usage of IPrincipalService; you can remove it if you don't
+        want or need it. Updated unit tests. Cleaned up existing code. Added additional unit tests for the API and
+        application projects.
+    </PackageReleaseNotes>
   </PropertyGroup>
 </Project>
