@@ -1,6 +1,6 @@
 using System.Reflection;
-using CleanArchTemplate.Application.Interfaces;
-using FluentValidation.AspNetCore;
+using FluentValidation;
+using Testing.Application.Interfaces;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +15,7 @@ public static class DependencyInjection
 
         var thisAssembly = Assembly.GetExecutingAssembly();
         services.AddAutoMapper(thisAssembly);
-        services.AddFluentValidation(fv => fv.RegisterValidatorsFromAssembly(thisAssembly));
+        services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
         services.AddMediatR(thisAssembly);
 
         return services;

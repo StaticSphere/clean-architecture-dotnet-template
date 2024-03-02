@@ -9,7 +9,7 @@ This solution was created following the guidelines of the Clean Architecture pat
 
 ## Architecture
 
-The solution is a set of .NET 6 C# projects. Each project has nullable type checking enabled out of the box. The projects implement the Clean Architecture pattern as described here:
+The solution is a set of .NET 8 C# projects. Each project has nullable type checking enabled out of the box. The projects implement the Clean Architecture pattern as described here:
 
 -   _CleanArchTemplate.Domain_ - This project is meant to hold the domain entities of the application. The classes in the `Entities` folder map to the data tables or records in whatever data store the application is configured to use.
 -   _CleanArchTemplate.Application_ - This project contains the business logic and rules that make the application as a whole run as it's supposed to. Any interfaces necessary for the application to run are defined in the `Interfaces` folder.
