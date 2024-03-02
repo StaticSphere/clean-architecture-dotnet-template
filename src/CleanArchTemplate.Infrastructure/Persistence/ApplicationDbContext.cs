@@ -56,7 +56,7 @@ public class ApplicationDbContext : DbContext, IApplicationDbContext
 #else
         optionsBuilder.UseSqlServer(
 #endif
-            _configuration.GetConnectionString("DefaultConnection"),
+            _configuration.GetConnectionString("DefaultConnection")!,
             x => x.MigrationsHistoryTable("__EFMigrationsHistory")
 #if(includePostgres)
         ).UseSnakeCaseNamingConvention();

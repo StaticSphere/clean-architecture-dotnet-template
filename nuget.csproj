@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
@@ -20,26 +20,21 @@
 
   <PropertyGroup>
     <PackageType>Template</PackageType>
-    <PackageVersion>2.1.0</PackageVersion>
+    <PackageVersion>3.0.0</PackageVersion>
     <PackageId>StaticSphere.CleanArchitecture.Api</PackageId>
     <Title>Clean Architecture Solution</Title>
     <Company>StaticSphere</Company>
     <Authors>Jamie Nordmeyer</Authors>
     <Copyright>Jamie Nordmeyer © 2021</Copyright>
-    <Description>Creates a .NET 6 solution based on the Clean Architecture pattern.</Description>
+    <Description>Creates a .NET 8 solution based on the Clean Architecture pattern.</Description>
     <PackageTags>c#;asp.net;core;template;web</PackageTags>
-    <PackageCopyright>Jamie Nordmeyer © 2021</PackageCopyright>
+    <PackageCopyright>Jamie Nordmeyer © 2024</PackageCopyright>
     <PackageProjectUrl>https://github.com/StaticSphere/clean-architecture-dotnet-template</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/StaticSphere/clean-architecture-dotnet-template</RepositoryUrl>
     <PackageReleaseNotes>
-        Renamed the Entity Framework class (if --includeEf is specified) to ApplicationDbContext. However, you can
-        provide the optional --dbContextName to change this. You'll want to add DbContext as a suffix to this name
-        if you want it. Fixed broken --includeTests parameter (before, it would always include tests). Added removal
-        of Server header to the Program.cs file. Included usage of IPrincipalService; you can remove it if you don't
-        want or need it. Updated unit tests. Cleaned up existing code. Added additional unit tests for the API and
-        application projects.
+        Updated source to .NET 8.
     </PackageReleaseNotes>
   </PropertyGroup>
 </Project>

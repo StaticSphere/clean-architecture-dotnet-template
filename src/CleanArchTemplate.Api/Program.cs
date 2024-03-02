@@ -13,6 +13,7 @@ using Microsoft.OpenApi.Models;
 
 #if (useStartup)
 CreateHostBuilder(args).Build().Run();
+return;
 
 IHostBuilder CreateHostBuilder(string[] args) =>
     Host.CreateDefaultBuilder(args)
@@ -79,11 +80,8 @@ app.Use(async (httpContext, next) =>
 
 app.UseAuthorization();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapHealthChecks("/health");
-    endpoints.MapControllers();
-});
+app.MapHealthChecks("/health");
+app.MapControllers();
 
 app.Run();
 #endif
