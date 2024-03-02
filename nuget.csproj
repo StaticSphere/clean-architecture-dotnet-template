@@ -7,7 +7,7 @@
     <EnableDefaultItems>false</EnableDefaultItems>
     <NoDefaultExcludes>true</NoDefaultExcludes>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <PackageOutputPath>.</PackageOutputPath>
+    <PackageOutputPath>./dist</PackageOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,6 +16,7 @@
     <Content Include=".template.config\**\*" />
     <Content Include="*" Exclude="nuget.csproj" />
     <Compile Remove="**\*" />
+    <None Include="README.md" Pack="true" PackagePath="\"  />
   </ItemGroup>
 
   <PropertyGroup>
@@ -36,5 +37,6 @@
     <PackageReleaseNotes>
         Updated source to .NET 8.
     </PackageReleaseNotes>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 </Project>
